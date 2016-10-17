@@ -76,12 +76,15 @@ while True:
    tls = sundata[int(weeknum)][3]   # Evening twilight ends
 
    if nowhour <= tlr or nowhour >= tls:
+       print("Nightime: " + str(nowhour))
       # Nighttime
       # load dark frame profile
+      SharpCap.Settings.DarkFiles = "c:/temp/data.png"
 
    else:
       # Daytime
       print("Daytime: " + str(nowhour))
+      SharpCap.Settings.DarkFiles = "none"
       SharpCap.SelectedCamera.Controls.Exposure.Automatic = True
 
    SharpCap.SelectedCamera.CaptureSingleFrameTo(capturedir + "capture.png")
